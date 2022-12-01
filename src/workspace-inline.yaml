@@ -1,0 +1,21 @@
+apiVersion: tf.crossplane.io/v1alpha1
+kind: Workspace
+metadata:
+  name: test-cptf
+  annotations:
+spec:
+  forProvider:
+    source: Inline
+    module: |
+      resource "aws_s3_bucket" "paas-cp" {
+        bucket = "paas-cp-s3s"
+        tags = {
+          Name        = "arun"
+          Environment = "Dev"
+        }
+      }
+  writeConnectionSecretToRef:
+    namespace: crossplane-system
+    name: terraform-workspace-arun-cp-4
+  providerConfigRef:
+    name: aws-us-east-1
