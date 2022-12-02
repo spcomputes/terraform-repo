@@ -1,0 +1,17 @@
+apiVersion: tf.crossplane.io/v1alpha1
+kind: Workspace
+metadata:
+  name: cp-test-remote-2
+  annotations:
+spec:
+  forProvider:
+    source: Remote
+    module: git::https://github.com/spcomputes/terraform-repo.git//src/tf?ref=main
+    vars:
+    - key: aws_instance_type
+      value: t2.small
+  writeConnectionSecretToRef:
+    namespace: crossplane-system
+    name: terraform-workspace-arun-cp-remote-1
+  providerConfigRef:
+    name: aws-us-east-1
