@@ -10,10 +10,18 @@ resource "aws_instance" "cluster-instances" {
 }
 
 output "ec2-public-dns" {
-  description = "Detaisl about ec2 provisioned"
-  value       = cluster-instances.public_dns
+  count = var.desired_cluster_size
+  description = "Details about ec2 provisioned"
+  value       = "${element(aws_instance.cluster-instances.*.public_dns, count.index)}"
 }
 output "ec2-private-dns" {
-  description = "Detaisl about ec2 provisioned"
-  value       = cluster-instances.private_dns 
+  count = var.desired_cluster_size
+  description = "Details about ec2 provisioned"
+  value       = "${element(aws_instance.cluster-instances.*.private_dns, count.index)}"
 }
+output "ec2-arn" {
+  count = var.desired_cluster_size
+  description = "Details about ec2 provisioned"
+  value       = "${element(aws_instance.cluster-instances.*.arn, count.index)}"
+}
+
