@@ -6,7 +6,7 @@ metadata:
 spec:
   forProvider:
     source: Remote
-    module: git::https://github.com/spcomputes/terraform-repo.git//src/tf?ref=main
+    module: git::https://github.com/spcomputes/terraform-repo.git//client1/tf?ref=main
     vars:
     - key: aws_instance_type
       value: t2.small
