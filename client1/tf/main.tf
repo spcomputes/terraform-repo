@@ -8,3 +8,12 @@ resource "aws_instance" "cluster-instances" {
     
   }
 }
+
+output "ec2-public-dns" {
+  description = "Detaisl about ec2 provisioned"
+  value       = cluster-instances.public_dns
+}
+output "ec2-private-dns" {
+  description = "Detaisl about ec2 provisioned"
+  value       = cluster-instances.private_dns 
+}
