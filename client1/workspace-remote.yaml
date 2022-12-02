@@ -12,6 +12,6 @@ spec:
       value: t2.micro
   writeConnectionSecretToRef:
     namespace: crossplane-system
-    name: terraform-workspace-arun-cp-remote-1
+    name: terraform-workspace-output
   providerConfigRef:
     name: aws-us-east-1
