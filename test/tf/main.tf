@@ -27,6 +27,7 @@ terraform {
         bucket = "tfstatebucketcplanetest"
         key    = "s3-test-remote"
         region = "us-east-1"
+        shared_credentials_file = "aws-creds.ini"
        }
-}
+      }
 
