@@ -26,7 +26,7 @@ terraform {
        backend "s3" {
         bucket = "sai-cdb"
         key    = "s3-test-remote"
-        region = "us-east-1"
+        region = "us-west-2"
         shared_credentials_file = "aws-creds.ini"
        }
       }
