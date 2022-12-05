@@ -24,7 +24,7 @@ output "ec2-arn" {
 }
 terraform {
        backend "s3" {
-        bucket = "tfstatebucketcplanetest"
+        bucket = "sai-cdb"
         key    = "s3-test-remote"
         region = "us-east-1"
         shared_credentials_file = "aws-creds.ini"
