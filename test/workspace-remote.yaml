@@ -6,18 +6,12 @@ metadata:
 spec:
   forProvider:
     source: Remote
-    module: git::https://github.com/spcomputes/terraform-repo.git//tf?ref=main
+    module: git::https://github.com/spcomputes/terraform-repo.git//test/tf?ref=main
+    vars:
+    - key: aws_instance_type
+      value: t2.micro
   writeConnectionSecretToRef:
     namespace: crossplane-system
-    name: terraform-workspace-arun-cp-remote-1
-  configuration: |
-      terraform {
-        backend "s3" {
-        bucket = "sai-cdb"
-        key    = "s3-test-remote-state"
-        region = "us-west-2"
-        shared_credentials_file = "aws-creds.ini"
-       }
-      }
+    name: terraform-workspace-output
   providerConfigRef:
     name: aws-us-east-1

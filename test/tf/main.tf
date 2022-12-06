@@ -22,4 +22,11 @@ output "ec2-arn" {
   description = "Details about ec2 provisioned"
   value       = aws_instance.cluster-instances[0].arn
 }
-
+terraform {
+       backend "s3" {
+        bucket = "sai-cdb"
+        key    = "s3-test-remote"
+        region = "us-west-2"
+        shared_credentials_file = "aws-creds.ini"
+       }
+      }
