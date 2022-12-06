@@ -1,0 +1,23 @@
+apiVersion: tf.crossplane.io/v1alpha1
+kind: Workspace
+metadata:
+  name: cp-test-remote-2
+  annotations:
+spec:
+  forProvider:
+    source: Remote
+    module: git::https://github.com/spcomputes/terraform-repo.git//tf?ref=main
+  writeConnectionSecretToRef:
+    namespace: crossplane-system
+    name: terraform-workspace-arun-cp-remote-1
+  configuration: |
+      terraform {
+        backend "s3" {
+        bucket = "sai-cdb"
+        key    = "s3-test-remote-state"
+        region = "us-west-2"
+        shared_credentials_file = "aws-creds.ini"
+       }
+      }
+  providerConfigRef:
+    name: aws-us-east-1
